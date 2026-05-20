@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaung Si Thu Lin - System Engineer Portfolio</title>
-    <meta name="description" content="Official portfolio of Kaung Si Thu Lin. IT student in Osaka, specializing in System Engineering, AWS, and AI development.">
+    <title data-i18n="pageTitle">Kaung Si Thu Lin - System Engineer Portfolio</title>
+    <meta name="description" data-i18n="pageDescription" content="Official portfolio of Kaung Si Thu Lin. IT student in Osaka, specializing in System Engineering, AWS, and AI development.">
     <style>
         :root {
             color-scheme: dark;
@@ -126,6 +126,23 @@
 
         .nav-links a:hover {
             color: var(--text);
+            border-color: var(--line);
+            background: rgba(213, 180, 255, 0.08);
+        }
+
+        .lang-toggle {
+            margin-left: auto;
+            padding: 0.65rem 0.95rem;
+            border-radius: 999px;
+            border: 1px solid rgba(213, 180, 255, 0.22);
+            background: rgba(155, 92, 255, 0.14);
+            color: var(--text);
+            font: inherit;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .lang-toggle:hover {
             border-color: var(--line);
             background: rgba(213, 180, 255, 0.08);
         }
@@ -600,43 +617,43 @@
         <nav aria-label="Primary">
             <div class="brand">
                 <strong>Kaung Si Thu Lin</strong>
-                <span>IT Student & Aspiring System Engineer</span>
+                <span data-i18n="brandTagline">IT Student & Aspiring System Engineer</span>
             </div>
             <div class="nav-links">
-                <button id="langToggle">🇯🇵 日本語 / English</button>
-                <a href="#hero">Home</a>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#featured">Featured Work</a>
+                <a href="#hero" data-i18n="navHome">Home</a>
+                <a href="#about" data-i18n="navAbout">About</a>
+                <a href="#projects" data-i18n="navProjects">Projects</a>
+                <a href="#skills" data-i18n="navSkills">Skills</a>
+                <a href="#featured" data-i18n="navFeaturedWork">Featured Work</a>
             </div>
+            <button id="langToggle" class="lang-toggle">🇯🇵 日本語 / English</button>
         </nav>
 
         <main>
             <section id="hero" class="hero">
                 <div class="hero-copy">
-                    <span class="eyebrow">Portfolio</span>
+                    <span class="eyebrow" data-i18n="portfolio">Portfolio</span>
                     <h1>Kaung Si Thu Lin</h1>
-                    <p>IT Student & Aspiring System Engineer</p>
-                    <div class="hero-stats" aria-label="Quick highlights">
+                    <p data-i18n="brandTagline">IT Student(System Engineer)</p>
+                    <div class="hero-stats" aria-label="Quick highlights" data-i18n-attr="aria-label" data-i18n="quickHighlights">
                         <div class="stat">
-                            <strong>Based in Osaka</strong>
-                            <span>Currently studying and building practical experience.</span>
+                            <strong data-i18n="basedInOsaka">Based in Osaka</strong>
+                            <span data-i18n="basedInOsakaText">Currently studying and building practical experience.</span>
                         </div>
                         <div class="stat">
-                            <strong>Shift Leader</strong>
-                            <span>Working at a sushi restaurant while balancing studies.</span>
+                            <strong data-i18n="shiftLeader">Shift Leader</strong>
+                            <span data-i18n="shiftLeaderText">Working at a sushi restaurant while balancing studies.</span>
                         </div>
                     </div>
                 </div>
-                <div class="avatar-panel" aria-label="Avatar image placeholder">
+                <div class="avatar-panel" aria-label="Avatar image placeholder" data-i18n-attr="aria-label" data-i18n="avatarPanelLabel">
                     <div class="hero-content">
                         <div class="steam-avatar-wrapper">
-                            <img src="kstl.JPG" alt="Kaung Si Thu Lin's Avatar" class="steam-avatar" onerror="this.style.display='none'; this.parentElement.classList.add('avatar-missing');">
+                            <img src="kstl.JPG" alt="Kaung Si Thu Lin's Avatar" data-i18n-attr="alt" data-i18n="avatarAlt" class="steam-avatar" onerror="this.style.display='none'; this.parentElement.classList.add('avatar-missing');">
                         </div>
 
                         <h1>Kaung Si Thu Lin</h1>
-                        <p>Aspiring System Engineer</p>
+                        <p data-i18n="aspiringRole">Aspiring System Engineer</p>
                     </div>
                 </div>
             </section>
@@ -650,29 +667,29 @@
 
                 <section id="about" class="panel">
                     <div class="section-heading">
-                        <h2>About Me</h2>
-                        <p>Background and focus</p>
+                        <h2 data-i18n="aboutHeading">About Me</h2>
+                        <p data-i18n="aboutSubtitle">Background and focus</p>
                     </div>
-                    <p>Hello! I am a 22-year-old IT student currently based in Osaka. I am passionate about system engineering and software development. Alongside my studies, I work as a shift leader at a sushi restaurant, which has strengthened my leadership, teamwork, and time management skills.</p>
+                    <p data-i18n="aboutText">Hello! I am a 22-year-old IT student currently based in Osaka. I am passionate about system engineering and software development. Alongside my studies, I work as a shift leader at a sushi restaurant, which has strengthened my leadership, teamwork, and time management skills.</p>
                 </section>
 
                 <section id="hobbies" class="panel">
                     <div class="section-heading">
-                        <h2>What I Love (Hobbies)</h2>
-                        <p>Personal interests</p>
+                        <h2 data-i18n="hobbiesHeading">What I Love (Hobbies)</h2>
+                        <p data-i18n="hobbiesSubtitle">Personal interests</p>
                     </div>
                     <ul>
-                        <li><strong>Gaming:</strong> Rainbow 6, Euro Truck Simulator 2, Ark Survival, Elden Ring.</li>
-                        <li><strong>Fitness:</strong> Bodybuilding and strength training (I train regularly with 30kg dumbbells).</li>
+                        <li><strong data-i18n="gamingLabel">Gaming:</strong> <span data-i18n="gamingText">Rainbow 6, Euro Truck Simulator 2, Ark Survival, Elden Ring.</span></li>
+                        <li><strong data-i18n="fitnessLabel">Fitness:</strong> <span data-i18n="fitnessText">Bodybuilding and strength training (I train regularly with 30kg dumbbells).</span></li>
                     </ul>
                 </section>
 
                 <section id="skills" class="panel">
                     <div class="section-heading">
-                        <h2>What I Can Do (Skills)</h2>
-                        <p>Languages, tools, and AI</p>
+                        <h2 data-i18n="skillsHeading">What I Can Do (Skills)</h2>
+                        <p data-i18n="skillsSubtitle">Languages, tools, and AI</p>
                     </div>
-                    <div class="skills-flex" aria-label="Skills icons">
+                    <div class="skills-flex" aria-label="Skills icons" data-i18n-attr="aria-label" data-i18n="skillsIconsLabel">
                         <span class="skill-chip"><i>C</i> C</span>
                         <span class="skill-chip"><i>PH</i> PHP</span>
                         <span class="skill-chip"><i>J</i> Java</span>
@@ -688,36 +705,36 @@
                         <span class="skill-chip"><i>CP</i> GitHub Copilot</span>
                     </div>
                     <ul>
-                        <li><strong>Programming Languages:</strong> C, PHP, Java, Python, SQL, MySQL.</li>
-                        <li><strong>Tools & Platforms:</strong> VS Code, GitHub, Git, Linux, AWS, Google AI Studio.</li>
-                        <li><strong>AI Tools:</strong> Highly efficient in utilizing GitHub Copilot for coding.</li>
+                        <li><strong data-i18n="programmingLanguagesLabel">Programming Languages:</strong> <span data-i18n="programmingLanguagesText">C, PHP, Java, Python, SQL, MySQL.</span></li>
+                        <li><strong data-i18n="toolsPlatformsLabel">Tools & Platforms:</strong> <span data-i18n="toolsPlatformsText">VS Code, GitHub, Git, Linux, AWS, Google AI Studio.</span></li>
+                        <li><strong data-i18n="aiToolsLabel">AI Tools:</strong> <span data-i18n="aiToolsText">Highly efficient in utilizing GitHub Copilot for coding.</span></li>
                     </ul>
                 </section>
 
                 <section id="projects" class="panel">
                     <div class="section-heading">
-                        <h2>My Projects</h2>
-                        <p>Grid layout preview</p>
+                        <h2 data-i18n="projectsHeading">My Projects</h2>
+                        <p data-i18n="projectsSubtitle">Grid layout preview</p>
                     </div>
                     <div class="grid-projects">
                         <article class="project-card">
-                            <strong>AI Career & Campus Navigator:</strong>
-                            <p>An innovative AI application project proposal drafted in April 2026.</p>
+                            <strong data-i18n="projectOneTitle">AI Career & Campus Navigator:</strong>
+                            <p data-i18n="projectOneText">An innovative AI application project proposal drafted in April 2026.</p>
                         </article>
                         <article class="project-card">
-                            <strong>Corporate HR Presentation:</strong>
-                            <p>Delivered a comprehensive full-day presentation to company human resources early in 2026.</p>
+                            <strong data-i18n="projectTwoTitle">Corporate HR Presentation:</strong>
+                            <p data-i18n="projectTwoText">Delivered a comprehensive full-day presentation to company human resources early in 2026.</p>
                         </article>
                     </div>
                 </section>
 
                 <section id="featured" class="panel">
                     <div class="section-heading">
-                        <h2>Featured Project</h2>
+                        <h2 data-i18n="featuredProjectHeading">Featured Project</h2>
                     </div>
-                    <p class="featured-intro">Check out my presentation slides for "Code Crusher" directly below:</p>
+                    <p class="featured-intro" data-i18n="featuredIntro">Check out my presentation slides for "Code Crusher" directly below:</p>
                     <div class="iframe-container">
-                        <iframe src="https://gamma.app/embed/lfl7ko4gd5bcw92" style="width: 700px; max-width: 100%; height: 450px" allow="fullscreen" title="進級制作 code crusher"></iframe>
+                        <iframe src="https://gamma.app/embed/lfl7ko4gd5bcw92" style="width: 700px; max-width: 100%; height: 450px" allow="fullscreen" title="進級制作 code crusher" data-i18n-attr="title" data-i18n="iframeTitle"></iframe>
                     </div>
                 </section>
             </div>
@@ -727,6 +744,8 @@
     <script>
         const canvas = document.getElementById('spaceCanvas');
         const ctx = canvas.getContext('2d');
+        const pageTitle = document.querySelector('title');
+        const pageDescription = document.querySelector('meta[name="description"]');
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -777,6 +796,146 @@
                 y: Math.min(star.y, canvas.height)
             }));
         });
+    </script>
+    <script>
+        const translations = {
+            en: {
+                pageTitle: "Kaung Si Thu Lin - System Engineer Portfolio",
+                pageDescription: "Official portfolio of Kaung Si Thu Lin. IT student in Osaka, specializing in System Engineering, AWS, and AI development.",
+                brandTagline: "IT Student & Aspiring System Engineer",
+                navHome: "Home",
+                navAbout: "About",
+                navProjects: "Projects",
+                navSkills: "Skills",
+                navFeaturedWork: "Featured Work",
+                portfolio: "Portfolio",
+                quickHighlights: "Quick highlights",
+                basedInOsaka: "Based in Osaka",
+                basedInOsakaText: "Currently studying and building practical experience.",
+                shiftLeader: "Shift Leader",
+                shiftLeaderText: "Working at a sushi restaurant while balancing studies.",
+                avatarPanelLabel: "Avatar image placeholder",
+                avatarAlt: "Kaung Si Thu Lin's Avatar",
+                aspiringRole: "Aspiring System Engineer",
+                greeting: "Hi, I'm Kaung Si Thu Lin",
+                role: "System Engineer & IT Student",
+                projectTitle: "Featured Project"
+                ,aboutHeading: "About Me",
+                aboutSubtitle: "Background and focus",
+                aboutText: "Hello! I am a 22-year-old IT student currently based in Osaka. I am passionate about system engineering and software development. Alongside my studies, I work as a shift leader at a sushi restaurant, which has strengthened my leadership, teamwork, and time management skills.",
+                hobbiesHeading: "What I Love (Hobbies)",
+                hobbiesSubtitle: "Personal interests",
+                gamingLabel: "Gaming:",
+                gamingText: "Rainbow 6, Euro Truck Simulator 2, Ark Survival, Elden Ring.",
+                fitnessLabel: "Fitness:",
+                fitnessText: "Bodybuilding and strength training (I train regularly with 30kg dumbbells).",
+                skillsHeading: "What I Can Do (Skills)",
+                skillsSubtitle: "Languages, tools, and AI",
+                skillsIconsLabel: "Skills icons",
+                programmingLanguagesLabel: "Programming Languages:",
+                programmingLanguagesText: "C, PHP, Java, Python, SQL, MySQL.",
+                toolsPlatformsLabel: "Tools & Platforms:",
+                toolsPlatformsText: "VS Code, GitHub, Git, Linux, AWS, Google AI Studio.",
+                aiToolsLabel: "AI Tools:",
+                aiToolsText: "Highly efficient in utilizing GitHub Copilot for coding.",
+                projectsHeading: "My Projects",
+                projectsSubtitle: "Grid layout preview",
+                projectOneTitle: "AI Career & Campus Navigator:",
+                projectOneText: "An innovative AI application project proposal drafted in April 2026.",
+                projectTwoTitle: "Corporate HR Presentation:",
+                projectTwoText: "Delivered a comprehensive full-day presentation to company human resources early in 2026.",
+                featuredProjectHeading: "Featured Project",
+                featuredIntro: "Check out my presentation slides for \"Code Crusher\" directly below:",
+                iframeTitle: "Code Crusher presentation"
+            },
+            ja: {
+                pageTitle: "Kaung Si Thu Lin - システムエンジニア ポートフォリオ",
+                pageDescription: "オオサカ在住のIT学生、Kaung Si Thu Lin の公式ポートフォリオ。システムエンジニアリング、AWS、AI開発を中心に紹介します。",
+                brandTagline: "IT学生・システムエンジニア志望",
+                navHome: "ホーム",
+                navAbout: "概要",
+                navProjects: "プロジェクト",
+                navSkills: "スキル",
+                navFeaturedWork: "注目の作品",
+                portfolio: "ポートフォリオ",
+                quickHighlights: "クイックハイライト",
+                basedInOsaka: "大阪在住",
+                basedInOsakaText: "現在は学びながら実践経験を積んでいます。",
+                shiftLeader: "シフトリーダー",
+                shiftLeaderText: "寿司店で働きながら学業と両立しています。",
+                avatarPanelLabel: "アバター画像のプレースホルダー",
+                avatarAlt: "Kaung Si Thu Lin のアバター",
+                aspiringRole: "システムエンジニア志望",
+                greeting: "こんにちは、Kaung Si Thu Lin です",
+                role: "System Engineer および IT Student",
+                projectTitle: "注目プロジェクト",
+                aboutHeading: "自己紹介",
+                aboutSubtitle: "経歴と興味",
+                aboutText: "こんにちは。私は現在オオサカを拠点にしている22歳のIT学生です。システムエンジニアリングとソフトウェア開発に強い関心があります。学業のほかに、寿司店でシフトリーダーとして働いており、そこでリーダーシップ、チームワーク、時間管理の力を身につけました。",
+                hobbiesHeading: "好きなこと（趣味）",
+                hobbiesSubtitle: "個人的な興味",
+                gamingLabel: "ゲーム:",
+                gamingText: "Rainbow 6、Euro Truck Simulator 2、Ark Survival、Elden Ring。",
+                fitnessLabel: "フィットネス:",
+                fitnessText: "筋トレとストレングストレーニング（30kgのダンベルで定期的に鍛えています）。",
+                skillsHeading: "できること（スキル）",
+                skillsSubtitle: "言語、ツール、AI",
+                skillsIconsLabel: "スキルアイコン",
+                programmingLanguagesLabel: "プログラミング言語:",
+                programmingLanguagesText: "C、PHP、Java、Python、SQL、MySQL。",
+                toolsPlatformsLabel: "ツール・プラットフォーム:",
+                toolsPlatformsText: "VS Code、GitHub、Git、Linux、AWS、Google AI Studio。",
+                aiToolsLabel: "AIツール:",
+                aiToolsText: "GitHub Copilot を効率的に活用してコーディングしています。",
+                projectsHeading: "プロジェクト",
+                projectsSubtitle: "グリッド表示プレビュー",
+                projectOneTitle: "AI Career & Campus Navigator:",
+                projectOneText: "2026年4月に作成した、AI活用アプリケーションの企画案。",
+                projectTwoTitle: "企業向け人事プレゼンテーション:",
+                projectTwoText: "2026年初頭に、会社の人事部へ一日かけて行った包括的なプレゼンテーション。",
+                featuredProjectHeading: "注目プロジェクト",
+                featuredIntro: "下の \"Code Crusher\" のプレゼンテーション資料をご覧ください。",
+                iframeTitle: "Code Crusher のプレゼンテーション"
+            }
+        };
+
+        let currentLang = "en";
+
+        document.getElementById("langToggle").addEventListener("click", () => {
+            currentLang = currentLang === "en" ? "ja" : "en";
+            updateLanguage();
+        });
+
+        function updateLanguage() {
+            document.querySelectorAll("[data-i18n]").forEach(element => {
+                const key = element.getAttribute("data-i18n");
+                const translatedText = translations[currentLang][key];
+
+                if (element.tagName === "TITLE") {
+                    document.title = translatedText;
+                    return;
+                }
+
+                if (element.dataset.i18nAttr) {
+                    element.setAttribute(element.dataset.i18nAttr, translatedText);
+                    return;
+                }
+
+                element.innerText = translatedText;
+            });
+
+            if (pageTitle) {
+                pageTitle.textContent = translations[currentLang].pageTitle;
+            }
+
+            if (pageDescription) {
+                pageDescription.setAttribute("content", translations[currentLang].pageDescription);
+            }
+
+            document.documentElement.lang = currentLang;
+        }
+
+        updateLanguage();
     </script>
 </body>
 </html>
