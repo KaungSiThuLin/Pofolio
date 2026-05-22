@@ -408,6 +408,10 @@
             grid-column: 1 / -1;
         }
 
+        #contactLinks {
+            grid-column: 1 / -1;
+        }
+
         .section-heading {
             display: flex;
             align-items: end;
@@ -577,6 +581,48 @@
             border: none;
         }
 
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .link-card {
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .link-label {
+            margin: 0 0 0.42rem;
+            color: #cfcfcf;
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .link-value {
+            margin: 0;
+            color: #f4f4f4;
+            font-weight: 700;
+            line-height: 1.55;
+            word-break: break-word;
+        }
+
+        .link-value a {
+            color: #f4f4f4;
+            text-decoration: underline;
+            text-decoration-color: rgba(255, 255, 255, 0.34);
+            text-underline-offset: 0.2em;
+            transition: 0.2s ease;
+        }
+
+        .link-value a:hover {
+            color: #ffffff;
+            text-decoration-color: rgba(255, 255, 255, 0.8);
+        }
+
         @keyframes pulseRing {
             0%,
             100% {
@@ -625,6 +671,10 @@
             }
 
             .grid-projects {
+                grid-template-columns: 1fr;
+            }
+
+            .link-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -790,6 +840,33 @@
                         <iframe src="https://gamma.app/embed/lfl7ko4gd5bcw92" allow="fullscreen" title="進級制作 code crusher" data-i18n-attr="title" data-i18n="iframeTitle" loading="lazy"></iframe>
                     </div>
                 </section>
+
+                <section id="contactLinks" class="panel">
+                    <div class="section-heading">
+                        <h2 data-i18n="contactLinksHeading">Project Links & Contact</h2>
+                        <p data-i18n="contactLinksSubtitle">Update these boxes with your own info</p>
+                    </div>
+                    <div class="link-grid">
+                        <article class="link-card">
+                            <p class="link-label" data-i18n="projectRepoLabel">Project GitHub Repo</p>
+                            <p class="link-value"><a href="https://github.com/hein-a11y/Code-Crusher-project.git" target="_blank" rel="noopener">https://github.com/hein-a11y/Code-Crusher-project.git</a></p>
+                        </article>
+                        <article class="link-card">
+                            <p class="link-label" data-i18n="githubProfileLabel">GitHub Profile</p>
+                            <p class="link-value"><a href="https://github.com/KaungSiThuLin" target="_blank" rel="noopener">https://github.com/KaungSiThuLin</a></p>
+                        </article>
+                        <article class="link-card">
+                            <p class="link-label" data-i18n="emailLabel">Email</p>
+                            <p class="link-value"><a href="mailto:coedtxmax001@gmail.com">coedtxmax001@gmail.com</a></p>
+                            <p class="link-value"><a href="mailto:2505049@i-seifu.ac.jp">2505049@i-seifu.ac.jp</a></p>
+
+                        </article>
+                        <article class="link-card">
+                            <p class="link-label" data-i18n="phoneLabel">Phone</p>
+                            <p class="link-value"><a href="tel:+080-9999-3557"> 080-9999-3557</a></p>
+                        </article>
+                    </div>
+                </section>
             </div>
         </main>
     </div>
@@ -899,7 +976,13 @@
                 projectTwoText: "Delivered a comprehensive full-day presentation to company human resources early in 2026.",
                 featuredProjectHeading: "Featured Project",
                 featuredIntro: "Check out my presentation slides for \"Code Crusher\" directly below:",
-                iframeTitle: "Code Crusher presentation"
+                iframeTitle: "Code Crusher presentation",
+                contactLinksHeading: "Project Links & Contact",
+                contactLinksSubtitle: "Update these boxes with your own info",
+                projectRepoLabel: "Project GitHub Repo",
+                githubProfileLabel: "GitHub Profile",
+                emailLabel: "Email",
+                phoneLabel: "Phone"
             },
             ja: {
                 pageTitle: "Kaung Si Thu Lin あいあむうんちまん - システムエンジニア ポートフォリオ",
@@ -948,7 +1031,13 @@
                 projectTwoText: "2026年初頭に、会社の人事部へ一日かけて行った包括的なプレゼンテーション。",
                 featuredProjectHeading: "注目プロジェクト",
                 featuredIntro: "下の \"Code Crusher\" のプレゼンテーション資料をご覧ください。",
-                iframeTitle: "Code Crusher のプレゼンテーション"
+                iframeTitle: "Code Crusher のプレゼンテーション",
+                contactLinksHeading: "プロジェクトリンクと連絡先",
+                contactLinksSubtitle: "あなたの情報に書き換えて使えます",
+                projectRepoLabel: "プロジェクト GitHub リポジトリ",
+                githubProfileLabel: "GitHub プロフィール",
+                emailLabel: "メール",
+                phoneLabel: "電話番号"
             }
         };
 
