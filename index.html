@@ -11,61 +11,190 @@
 
         :root {
             /* Black & White High-Contrast Theme */
-            --bg-body: #000000; /* Pure Black */
-            --bg-panel: #0a0a0a; /* Very Dark Gray for panel definition */
-            --bg-inset: #050505; /* For defined inset elements */
-            --border: #333333; /* For sharp borders */
-            --text-main: #ffffff; /* Pure White for headers */
-            --text-muted: #a0a0a0; /* Gray for body text/muted elements */
-            --accent: #ffffff; /* Pure White accents */
-            --glass-bg: rgba(0, 0, 0, 0.85); /* For blurred navigation against pure black */
+            --bg-body: #000000; 
+            --bg-panel: #0a0a0a; 
+            --bg-inset: #050505; 
+            --border: #333333; 
+            --text-main: #ffffff; 
+            --text-muted: #a0a0a0; 
+            --accent: #ffffff; 
             --button-active: #ffffff;
             --button-text-active: #000000;
         }
 
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            position: relative;
             margin: 0;
             font-family: "Manrope", "Segoe UI", Arial, sans-serif;
             overflow-x: hidden;
             background-color: var(--bg-body);
             color: var(--text-main);
-            /* Remove subtle gradients/texture for pure B&W look */
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* --- FULL SCREEN HERO (SYSTEMATIC GRID) --- */
+        .hero-fullscreen {
+            position: relative;
+            width: 100vw;
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
+        /* Abstract Blueprint Grid Background */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-color: var(--bg-body);
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: 0 0, 0 0, 0 0, 0 0;
+            z-index: -3;
+            animation: scrollGrid 30s linear infinite;
         }
 
+        @keyframes scrollGrid {
+            0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+            100% { background-position: 100px 100px, 100px 100px, 100px 100px, 100px 100px; }
+        }
+
+        /* Radial Vignette to focus the center */
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 10%, #000000 90%);
+            z-index: -2;
+        }
+
+        /* Bottom fade into the panels */
+        .hero-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 60%, #000000 100%);
+            z-index: -1;
+        }
+
+        nav {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            width: 100%;
+        }
+
+        .brand strong {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--text-muted); }
+
+        .btn-pill {
+            background: #ffffff;
+            color: #000000;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-pill:hover { transform: scale(1.05); }
+
+        .hero-content {
+            position: absolute;
+            bottom: 5%;
+            left: 4rem;
+            right: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            z-index: 10;
+        }
+
+        .massive-title {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: clamp(3.5rem, 8vw, 8rem);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin: 0;
+            max-width: 70%;
+        }
+
+        /* Avatar styling UPDATED: Full Color, Bigger Size, Prominent spacing */
+        .hero-avatar {
+            width: 150px; /* Increased size significantly */
+            height: 150px; /* Maintain perfect circle */
+            border-radius: 50%;
+            border: 3px solid #ffffff; /* Thicker white border */
+            margin-bottom: 1.5rem; /* More space below */
+            object-fit: cover;
+            /* filter: grayscale(100%) contrast(1.1); REMOVED for full color */
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); /* Subtle glow for prominence */
+            display: block;
+        }
+
+        .hero-bio {
+            max-width: 320px;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin: 0 0 1rem 0;
+        }
+
+        /* --- REST OF THE PAGE (B&W PANELS) --- */
         .page-shell {
             position: relative;
             z-index: 1;
             width: min(1180px, calc(100% - 2rem));
             margin: 0 auto;
-            padding: 1.1rem 0 3.5rem;
+            padding: 0 0 3.5rem;
         }
 
-        /* Defined Black & White Panel Classes */
         .neo-panel {
             background: var(--bg-panel);
             border: 1px solid var(--border);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(255,255,255,0.03); /* Subtle light shadow for definition against pure black */
+            box-shadow: 0 10px 30px rgba(255,255,255,0.02);
             padding: 2.5rem;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: border-color 0.3s ease;
         }
 
-        .neo-panel:hover {
-            border-color: #555555;
+        .neo-panel:hover { border-color: #555555; }
+
+        .neo-inset {
+            background: var(--bg-inset);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
         }
 
         .neo-button {
@@ -81,167 +210,7 @@
 
         .neo-button:hover {
             border-color: var(--accent);
-            color: var(--accent);
             transform: translateY(-2px);
-        }
-
-        .neo-button:active {
-            background: var(--accent);
-            color: var(--button-text-active);
-            transform: translateY(0);
-        }
-
-        .neo-inset {
-            background: var(--bg-inset);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        nav {
-            position: sticky;
-            top: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            margin-bottom: 3rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 100;
-        }
-
-        .brand {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-        }
-
-        .brand strong {
-            font-family: "Space Grotesk", sans-serif;
-            font-size: 1.2rem;
-            color: var(--accent);
-            letter-spacing: 0.05em;
-        }
-
-        .brand span {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-            margin-bottom: 4rem;
-        }
-
-        .eyebrow {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            color: var(--bg-body); /* Dark text against white border/background */
-            background-color: var(--accent);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            border: 1px solid var(--border);
-            margin-bottom: 1.5rem;
-        }
-
-        h1 {
-            margin: 0;
-            font-family: "Space Grotesk", sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1.1;
-            color: var(--text-main);
-        }
-
-        .hero-copy h2 {
-            margin: 0.5rem 0 1.5rem 0;
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .hero-copy p {
-            max-width: 90%;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 1.1rem;
-            color: var(--accent);
-            margin-bottom: 0.3rem;
-        }
-
-        .stat span {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .avatar-panel {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 400px;
-        }
-
-        .avatar-container {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            padding: 12px;
-            background: var(--bg-panel);
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 40px rgba(255,255,255,0.03);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .steam-avatar {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            filter: contrast(1.1) brightness(1); /* Sharp and clear against B&W */
         }
 
         .content-stack {
@@ -252,7 +221,6 @@
         .section-heading h2 {
             font-family: "Space Grotesk", sans-serif;
             font-size: 2rem;
-            color: var(--text-main);
             margin: 0 0 0.5rem 0;
         }
 
@@ -261,10 +229,7 @@
             margin: 0 0 2rem 0;
         }
 
-        p, li {
-            color: #d0d0d0; /* Sharp but body friendly gray for readability */
-            line-height: 1.7;
-        }
+        p, li { color: #d0d0d0; line-height: 1.7; }
 
         /* Skills Layout */
         .skills-container {
@@ -274,7 +239,6 @@
         }
 
         .skills-group h3 {
-            color: var(--accent);
             margin: 0 0 1rem 0;
             font-family: "Space Grotesk", sans-serif;
         }
@@ -296,10 +260,10 @@
         }
 
         .skill-chip:hover {
-            transform: translateY(-2px);
             background: var(--accent);
             color: var(--button-text-active);
             border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         /* Projects Layout */
@@ -316,7 +280,6 @@
 
         .project-card strong {
             font-size: 1.2rem;
-            color: var(--text-main);
             margin-bottom: 0.8rem;
         }
 
@@ -335,27 +298,23 @@
             font-size: 0.75rem;
             padding: 0.4rem 0.8rem;
             border-radius: 8px;
-            color: var(--accent);
             background: var(--bg-inset);
             border: 1px solid var(--border);
         }
 
-        /* Presentation Banner */
+        /* Featured Banner */
         .featured-banner {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .featured-banner h3 {
-            margin: 0 0 0.5rem 0;
-            color: var(--accent);
-        }
+        .featured-banner h3 { margin: 0 0 0.5rem 0; }
+        .featured-banner p { margin: 0; color: var(--text-muted); }
 
-        .featured-banner p {
-            margin: 0;
-            color: var(--text-muted);
-        }
+        /* Hobbies */
+        ul { color: #d0d0d0; line-height: 1.7; }
+        ul li { margin-bottom: 0.5rem; }
 
         /* Contact Grid */
         .link-grid {
@@ -364,9 +323,7 @@
             gap: 1.5rem;
         }
 
-        .link-card {
-            text-align: center;
-        }
+        .link-card { text-align: center; }
 
         .link-label {
             color: var(--text-muted);
@@ -377,7 +334,6 @@
         }
 
         .link-value a {
-            color: var(--accent);
             font-weight: 600;
             text-decoration: underline;
             text-decoration-color: rgba(255, 255, 255, 0.2);
@@ -385,36 +341,37 @@
             transition: text-decoration-color 0.2s;
         }
 
-        .link-value a:hover {
-            text-decoration-color: var(--highlight);
-        }
+        .link-value a:hover { text-decoration-color: var(--accent); }
 
         @media (max-width: 980px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
+            nav { padding: 1.5rem 2rem; }
+            .nav-links { display: none; }
+            .hero-content {
+                flex-direction: column;
+                align-items: flex-start;
+                left: 2rem; right: 2rem;
+                bottom: 10%;
+                gap: 2rem;
             }
-            .hero-copy {
-                align-items: center;
-            }
+            .massive-title { max-width: 100%; }
+            .hero-avatar { width: 100px; height: 100px; } /* Slightly smaller on mobile */
             .featured-banner {
                 flex-direction: column;
                 gap: 1.5rem;
                 text-align: center;
-            }
-            .nav-links {
-                display: none; /* Add hamburger menu if needed */
             }
         }
     </style>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <div class="page-shell">
+    
+    <header class="hero-fullscreen">
+        <div class="hero-bg"></div>
+        
         <nav aria-label="Primary">
             <div class="brand">
                 <strong>Kaung Si Thu Lin</strong>
-                <span data-i18n="brandTagline">IT Student & Aspiring System Engineer</span>
             </div>
             <div class="nav-links">
                 <a href="#about" data-i18n="navAbout">About</a>
@@ -422,151 +379,150 @@
                 <a href="#projects" data-i18n="navProjects">Projects</a>
                 <a href="#contact" data-i18n="contactLinksHeading">Contact</a>
             </div>
-            <button id="langToggle" class="neo-button">🇯🇵 JP / EN</button>
+            <button id="langToggle" class="btn-pill">🇯🇵 JP / EN</button>
         </nav>
 
-        <main>
-            <section id="hero" class="hero">
-                <div class="hero-copy" data-aos="fade-right">
-                    <span class="eyebrow" data-i18n="portfolio">Portfolio</span>
-                    <h1>Kaung Si Thu Lin</h1>
-                    <h2>（カウンシトゥリン）</h2>
-                    <p data-i18n="aboutText">Hello! I am a 22-year-old IT student currently based in Osaka. I am passionate about system engineering and software development.</p>
-                    
-                    <div class="hero-stats">
-                        <div class="stat neo-inset">
-                            <strong data-i18n="basedInOsaka">Based in Osaka</strong>
-                            <span data-i18n="basedInOsakaText">Currently studying and building practical experience.</span>
-                        </div>
-                        <div class="stat neo-inset">
-                            <strong data-i18n="shiftLeader">Shift Supervisor</strong>
-                            <span data-i18n="shiftLeaderText">Working at a sushi restaurant while balancing studies.</span>
-                        </div>
-                    </div>
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="massive-title" data-i18n="heroTitle">Architecting<br>Digital<br>Systems.</h1>
+            <div>
+                <img src="kstl.JPG" alt="Kaung Si Thu Lin" class="hero-avatar" onerror="this.style.display='none';">
+                <p class="hero-bio" data-i18n="heroBio">Based in Osaka. I build robust backend infrastructure and practical software focused on real user needs.</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-shell">
+        <div class="content-stack">
+            
+            <section id="about" class="neo-panel" data-aos="fade-up">
+                <div class="section-heading">
+                    <h2 data-i18n="aboutHeading">About Me</h2>
+                    <p data-i18n="aboutSubtitle">Background and focus</p>
+                </div>
+                <p data-i18n="aboutText">Hello! I am a 22-year-old IT student currently based in Osaka. I am passionate about system engineering and software development. Alongside my studies, I work as a shift supervisor at a sushi restaurant, which has strengthened my leadership, teamwork, and time management skills.</p>
+            </section>
+
+            <section id="skills" class="neo-panel" data-aos="fade-up">
+                <div class="section-heading">
+                    <h2 data-i18n="skillsHeading">Technical Skills</h2>
+                    <p data-i18n="skillsSubtitle">Languages, platforms, and tools</p>
                 </div>
                 
-                <div class="avatar-panel" data-aos="fade-left">
-                    <div class="avatar-container">
-                        <img src="kstl.JPG" alt="Kaung Si Thu Lin's Avatar" class="steam-avatar" onerror="this.style.display='none';">
+                <div class="skills-container">
+                    <div class="skills-group neo-inset">
+                        <h3 data-i18n="backendLabel">Backend & Database</h3>
+                        <div class="skills-flex">
+                            <span class="skill-chip">C</span>
+                            <span class="skill-chip">Java</span>
+                            <span class="skill-chip">Python</span>
+                            <span class="skill-chip">PHP</span>
+                            <span class="skill-chip">SQL</span>
+                            <span class="skill-chip">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="skills-group neo-inset">
+                        <h3 data-i18n="cloudLabel">Cloud & Infra</h3>
+                        <div class="skills-flex">
+                            <span class="skill-chip">AWS</span>
+                            <span class="skill-chip">Linux</span>
+                        </div>
+                    </div>
+                    <div class="skills-group neo-inset">
+                        <h3 data-i18n="toolsLabel">Tools & AI</h3>
+                        <div class="skills-flex">
+                            <span class="skill-chip">Git / GitHub</span>
+                            <span class="skill-chip">VS Code</span>
+                            <span class="skill-chip">Google AI Studio</span>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <div class="content-stack">
-                <section id="skills" class="neo-panel" data-aos="fade-up">
-                    <div class="section-heading">
-                        <h2 data-i18n="skillsHeading">Technical Skills</h2>
-                        <p data-i18n="skillsSubtitle">Languages, platforms, and tools</p>
-                    </div>
-                    
-                    <div class="skills-container">
-                        <div class="skills-group neo-inset">
-                            <h3 data-i18n="backendLabel">Backend & Database</h3>
-                            <div class="skills-flex">
-                                <span class="skill-chip">C</span>
-                                <span class="skill-chip">Java</span>
-                                <span class="skill-chip">Python</span>
-                                <span class="skill-chip">PHP</span>
-                                <span class="skill-chip">SQL</span>
-                                <span class="skill-chip">MySQL</span>
-                            </div>
+            <section id="projects" class="neo-panel" data-aos="fade-up">
+                <div class="section-heading">
+                    <h2 data-i18n="projectsHeading">Projects & Experience</h2>
+                </div>
+                <div class="grid-projects">
+                    <article class="project-card neo-inset">
+                        <strong data-i18n="projectOneTitle">AI Career & Campus Navigator</strong>
+                        <p data-i18n="projectOneText">An EC platform where you can buy games and gadgets in one place.</p>
+                        <div class="project-tags">
+                            <span class="tag">System Design</span>
+                            <span class="tag">Web</span>
                         </div>
-                        <div class="skills-group neo-inset">
-                            <h3 data-i18n="cloudLabel">Cloud & Infra</h3>
-                            <div class="skills-flex">
-                                <span class="skill-chip">AWS</span>
-                                <span class="skill-chip">Linux</span>
-                            </div>
+                    </article>
+                    <article class="project-card neo-inset">
+                        <strong data-i18n="projectTwoTitle">Corporate HR Presentation</strong>
+                        <p data-i18n="projectTwoText">Delivered a comprehensive presentation to company human resources regarding future employment.</p>
+                        <div class="project-tags">
+                            <span class="tag">Communication</span>
+                            <span class="tag">Leadership</span>
                         </div>
-                        <div class="skills-group neo-inset">
-                            <h3 data-i18n="toolsLabel">Tools & AI</h3>
-                            <div class="skills-flex">
-                                <span class="skill-chip">Git / GitHub</span>
-                                <span class="skill-chip">VS Code</span>
-                                <span class="skill-chip">Google AI Studio</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                    </article>
+                </div>
+            </section>
 
-                <section id="projects" class="neo-panel" data-aos="fade-up">
-                    <div class="section-heading">
-                        <h2 data-i18n="projectsHeading">Projects & Experience</h2>
+            <section id="featured" class="neo-panel" data-aos="fade-up">
+                <div class="featured-banner">
+                    <div>
+                        <h3 data-i18n="featuredProjectHeading">Featured Project: Code Crusher</h3>
+                        <p data-i18n="featuredIntro">View the complete slide deck detailing the system architecture.</p>
                     </div>
-                    <div class="grid-projects">
-                        <article class="project-card neo-inset">
-                            <strong data-i18n="projectOneTitle">AI Career & Campus Navigator</strong>
-                            <p data-i18n="projectOneText">An EC platform where you can buy games and gadgets in one place.</p>
-                            <div class="project-tags">
-                                <span class="tag">System Design</span>
-                                <span class="tag">Web</span>
-                            </div>
-                        </article>
-                        <article class="project-card neo-inset">
-                            <strong data-i18n="projectTwoTitle">Corporate HR Presentation</strong>
-                            <p data-i18n="projectTwoText">Delivered a comprehensive presentation to company human resources regarding future employment.</p>
-                            <div class="project-tags">
-                                <span class="tag">Communication</span>
-                                <span class="tag">Leadership</span>
-                            </div>
-                        </article>
-                    </div>
-                </section>
+                    <a href="https://gamma.app/embed/lfl7ko4gd5bcw92" target="_blank" rel="noopener" class="neo-button" data-i18n="viewPresentation">View Presentation →</a>
+                </div>
+            </section>
 
-                <section id="featured" class="neo-panel" data-aos="fade-up">
-                    <div class="featured-banner">
-                        <div>
-                            <h3 data-i18n="featuredProjectHeading">Featured Project: Code Crusher</h3>
-                            <p data-i18n="featuredIntro">View the complete slide deck detailing the system architecture.</p>
-                        </div>
-                        <a href="https://gamma.app/embed/lfl7ko4gd5bcw92" target="_blank" rel="noopener" class="neo-button" data-i18n="viewPresentation">View Presentation →</a>
-                    </div>
-                </section>
+            <section id="hobbies" class="neo-panel" data-aos="fade-up">
+                <div class="section-heading">
+                    <h2 data-i18n="hobbiesHeading">Hobbies & Interests</h2>
+                </div>
+                <ul>
+                    <li><strong data-i18n="fitnessLabel">Fitness:</strong> <span data-i18n="fitnessText">Bodybuilding and strength training.</span></li>
+                    <li><strong data-i18n="musicLabel">Music:</strong> <span data-i18n="musicText">Punk rock enthusiast, avid headset collector</span></li>
+                    <li><strong data-i18n="gamingLabel">Gaming & Cinema:</strong> <span data-i18n="gamingText">Action gaming (Elden Ring, Sekiro), deep anime interest, and cinematic film lover (Blade Runner, Dune).</span></li>
+                </ul>
+            </section>
 
-                <section id="contact" class="neo-panel" data-aos="fade-up">
-                    <div class="section-heading" style="text-align: center;">
-                        <h2 data-i18n="contactLinksHeading">Let's Connect</h2>
-                    </div>
-                    <div class="link-grid">
-                        <article class="link-card neo-inset">
-                            <p class="link-label" data-i18n="projectRepoLabel">Project Repo</p>
-                            <p class="link-value"><a href="https://github.com/hein-a11y/Code-Crusher-project.git" target="_blank">Code-Crusher</a></p>
-                        </article>
-                        <article class="link-card neo-inset">
-                            <p class="link-label" data-i18n="githubProfileLabel">GitHub Profile</p>
-                            <p class="link-value"><a href="https://github.com/KaungSiThuLin" target="_blank">@KaungSiThuLin</a></p>
-                        </article>
-                        <article class="link-card neo-inset">
-                            <p class="link-label" data-i18n="emailLabel">Email</p>
-                            <p class="link-value"><a href="mailto:coedtxmax001@gmail.com">coedtxmax001@gmail.com</a></p>
-                            <p class="link-label" data-i18n="emailLabel">Email</p>
-                            <p class="link-value"><a href="mailto:2505049@i-seifu.jp">2505049@i-seifu.jp</a></p>
-                        </article>
-                    </div>
-                </section>
-            </div>
-        </main>
+            <section id="contact" class="neo-panel" data-aos="fade-up">
+                <div class="section-heading" style="text-align: center;">
+                    <h2 data-i18n="contactLinksHeading">Let's Connect</h2>
+                </div>
+                <div class="link-grid">
+                    <article class="link-card neo-inset">
+                        <p class="link-label" data-i18n="projectRepoLabel">Project Repo</p>
+                        <p class="link-value"><a href="https://github.com/hein-a11y/Code-Crusher-project.git" target="_blank">Code-Crusher</a></p>
+                    </article>
+                    <article class="link-card neo-inset">
+                        <p class="link-label" data-i18n="githubProfileLabel">GitHub Profile</p>
+                        <p class="link-value"><a href="https://github.com/KaungSiThuLin" target="_blank">@KaungSiThuLin</a></p>
+                    </article>
+                    <article class="link-card neo-inset">
+                        <p class="link-label" data-i18n="emailLabel">Email</p>
+                        <p class="link-value"><a href="mailto:coedtxmax001@gmail.com">coedtxmax001@gmail.com</a></p>
+                         <p class="link-label" data-i18n="emailLabel">Email</p>
+                        <p class="link-value"><a href="mailto:2505049i-seifu.jp">2505049i-seifu.jp</a></p>
+                    </article>
+                </div>
+            </section>
+        </div>
     </div>
 
     <script>
         const translations = {
             en: {
                 pageTitle: "Kaung Si Thu Lin - System Engineer Portfolio",
-                pageDescription: "Official portfolio of Kaung Si Thu Lin. IT student in Osaka.",
-                brandTagline: "IT Student & Aspiring System Engineer",
                 navAbout: "About",
                 navProjects: "Projects",
                 navSkills: "Skills",
-                portfolio: "Portfolio",
-                basedInOsaka: "Based in Osaka",
-                basedInOsakaText: "Currently studying and building practical experience.",
-                shiftLeader: "Shift Supervisor",
-                shiftLeaderText: "Working at a sushi restaurant while balancing studies.",
-                aboutText: "Hello! I am a 22-year-old IT student currently based in Osaka. I am passionate about system engineering and software development.",
+                heroTitle: "Architecting\nDigital\nSystems.",
+                heroBio: "Based in Osaka. I build robust backend infrastructure and practical software focused on real user needs.",
+                aboutHeading: "About Me",
+                aboutSubtitle: "Background and focus",
+                aboutText: "Hello! I am a 22-year-old IT student currently based in Osaka. I am passionate about system engineering and software development. Alongside my studies, I work as a shift supervisor at a sushi restaurant, which has strengthened my leadership, teamwork, and time management skills.",
                 skillsHeading: "Technical Skills",
                 skillsSubtitle: "Languages, platforms, and tools",
                 backendLabel: "Backend & Database",
-                cloudLabel: "Cloud & Infrastructure",
+                cloudLabel: "Cloud & Infra",
                 toolsLabel: "Tools & AI",
                 projectsHeading: "Projects & Experience",
                 projectOneTitle: "AI Career & Campus Navigator",
@@ -574,26 +530,30 @@
                 projectTwoTitle: "Corporate HR Presentation",
                 projectTwoText: "Delivered a comprehensive presentation to company human resources regarding future employment.",
                 featuredProjectHeading: "Featured Project: Code Crusher",
-                featuredIntro: "View the complete slide deck detailing the system architecture and development process.",
-                viewPresentation: "View Presentation",
+                featuredIntro: "View the complete slide deck detailing the system architecture.",
+                viewPresentation: "View Presentation →",
+                hobbiesHeading: "Hobbies & Interests",
+                fitnessLabel: "Fitness:",
+                fitnessText: "Bodybuilding and strength training.",
+                musicLabel: "Music:",
+                musicText: "Punk rock enthusiast, avid headset collector",
+                gamingLabel: "Gaming & Cinema:",
+                gamingText: "Action gaming (Elden Ring, Sekiro), deep anime interest, and cinematic film lover (Blade Runner, Dune).",
                 contactLinksHeading: "Let's Connect",
                 projectRepoLabel: "Project Repo",
-                githubProfileLabel: "GitHub",
+                githubProfileLabel: "GitHub Profile",
                 emailLabel: "Email"
             },
             ja: {
-                pageTitle: "Kaung Si Thu Lin - システムエンジニア ポートフォリオ",
-                pageDescription: "大阪在住のIT学生、Kaung Si Thu Lin の公式ポートフォリオ。",
-                brandTagline: "IT学生・システムエンジニア志望",
+                pageTitle: "Kaung Si Thu Lin - システムエンジニア",
                 navAbout: "概要",
                 navProjects: "プロジェクト",
                 navSkills: "スキル",
-                portfolio: "ポートフォリオ",
-                basedInOsaka: "大阪在住",
-                basedInOsakaText: "現在は学びながら実践経験を積んでいます。",
-                shiftLeader: "シフトスーパーバイザー",
-                shiftLeaderText: "寿司店で時間帯責任者として働きながら学業と両立しています。",
-                aboutText: "こんにちは。私は現在大阪を拠点にしている22歳のIT学生です。システムエンジニアリングとソフトウェア開発に強い関心があります。",
+                heroTitle: "Architecting\nDigital\nSystems.",
+                heroBio: "大阪を拠点に活動。ユーザーの真のニーズに焦点を当て、堅牢なインフラと実用的なソフトウェアを構築しています。",
+                aboutHeading: "自己紹介",
+                aboutSubtitle: "経歴と興味",
+                aboutText: "こんにちは。私は現在大阪を拠点にしている22歳のIT学生です。システムエンジニアリングとソフトウェア開発に強い関心があります。学業のほかに、寿司店でシフトリーダーとして働いており、そこでリーダーシップ、チームワーク、時間管理の力を実践的に磨いています。",
                 skillsHeading: "技術スキル",
                 skillsSubtitle: "言語、プラットフォーム、ツール",
                 backendLabel: "バックエンド・データベース",
@@ -605,8 +565,15 @@
                 projectTwoTitle: "企業向け人事プレゼンテーション",
                 projectTwoText: "会社の人事部へ将来の雇用に関する包括的なプレゼンテーションを行いました。",
                 featuredProjectHeading: "注目プロジェクト: Code Crusher",
-                featuredIntro: "システムアーキテクチャと開発プロセスを詳述したスライドデッキ全体をご覧ください。",
-                viewPresentation: "プレゼンを見る",
+                featuredIntro: "システムアーキテクチャを詳述したスライドデッキをご覧ください。",
+                viewPresentation: "プレゼンを見る →",
+                hobbiesHeading: "趣味・関心",
+                fitnessLabel: "フィットネス:",
+                fitnessText: "筋トレとストレングストレーニング。",
+                musicLabel: "Music:",
+                musicText: "パンクロック愛好家、ヘッドセット収集 collector",
+                gamingLabel: "Gaming & Cinema:",
+                gamingText: "アクションゲーム（Elden Ring、Sekiro）、アニメ、シネマティック映画（Blade Runner、Dune）が好きです。",
                 contactLinksHeading: "連絡先",
                 projectRepoLabel: "プロジェクト リポジトリ",
                 githubProfileLabel: "GitHub",
@@ -625,7 +592,12 @@
                 const key = element.getAttribute("data-i18n");
                 const translatedText = translations[currentLang][key];
                 if (!translatedText) return;
-                element.innerText = translatedText;
+                
+                if (key === 'heroTitle') {
+                    element.innerHTML = translatedText.replace(/\n/g, '<br>');
+                } else {
+                    element.innerText = translatedText;
+                }
             });
             document.documentElement.lang = currentLang;
         }
