@@ -114,6 +114,28 @@
         }
         .btn-dark:hover { transform: scale(1.05); }
 
+        .external-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .external-link::after {
+            content: "↗";
+            font-size: 0.75em;
+            line-height: 1;
+            opacity: 0;
+            transform: translate(-0.2rem, 0.2rem);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .external-link:hover::after,
+        .external-link:focus-visible::after {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
         .hero-stage {
             position: absolute;
             inset: 0;
@@ -589,7 +611,7 @@
                 <a href="#about" data-i18n="navAbout">About</a>
                 <a href="#skills" data-i18n="navSkills">Services</a>
             </div>
-            <button id="langToggle" class="btn-dark">JP / EN</button>
+            <button id="langToggle" class="btn-dark" type="button">JP / EN / မြန်မာ</button>
         </nav>
 
         <div class="hero-stage" aria-hidden="true">
@@ -606,7 +628,7 @@
 
         <h1 class="massive-title hero-kaung" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="320">KAUNG</h1>
 
-        <img src="kk.png" alt="Kaung Si Thu Lin" class="hero-photo" data-aos="fade-up" data-aos-duration="1200">
+        <img src="kk-optimized.jpg" alt="Kaung Si Thu Lin" class="hero-photo" data-aos="fade-up" data-aos-duration="1200" loading="eager" fetchpriority="high" decoding="async">
 
         <div class="hero-card" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="500">
             <h2 class="role-title" data-i18n="roleTitle">SYSTEM<br>ENGINEER</h2>
@@ -642,6 +664,7 @@
                     <span class="tag">Linux</span>
                     <span class="tag">Git / GitHub</span>
                     <span class="tag">Google AI Studio</span>
+                    <span class="tag">Copilot</span>
                 </div>
             </div>
         </section>
@@ -675,7 +698,7 @@
                 <h3 data-i18n="featuredProjectHeading">Code Crusher</h3>
                 <p data-i18n="featuredIntro">View the complete slide deck detailing the system architecture.</p>
             </div>
-            <a href="https://gamma.app/embed/lfl7ko4gd5bcw92" target="_blank" rel="noopener" class="btn-dark" data-i18n="viewPresentation">View Presentation</a>
+            <a href="https://gamma.app/embed/lfl7ko4gd5bcw92" target="_blank" rel="noopener" class="btn-dark external-link" data-i18n="viewPresentation">View Presentation</a>
         </section>
 
         <section class="info-board" data-aos="fade-up">
@@ -692,20 +715,20 @@
             <div class="connect-grid">
                 <article class="connect-card">
                     <span class="connect-label" data-i18n="projectRepoLabel">Project Repo</span>
-                    <a class="connect-value" href="https://github.com/KaungSiThuLin/Code-Crusher" target="_blank" rel="noopener" data-i18n="projectRepoValue">Code-Crusher</a>
+                    <a class="connect-value external-link" href="https://github.com/KaungSiThuLin/Code-Crusher" target="_blank" rel="noopener" aria-label="Visit my Code Crusher project repository on GitHub" data-i18n="projectRepoValue">Code-Crusher</a>
                 </article>
                 <article class="connect-card">
                     <span class="connect-label" data-i18n="githubProfileLabel">GitHub Profile</span>
-                    <a class="connect-value" href="https://github.com/KaungSiThuLin" target="_blank" rel="noopener" data-i18n="githubProfileValue">@KaungSiThuLin</a>
+                    <a class="connect-value external-link" href="https://github.com/KaungSiThuLin" target="_blank" rel="noopener" aria-label="Visit my GitHub profile" data-i18n="githubProfileValue">@KaungSiThuLin</a>
                 </article>
                 <article class="connect-card connect-stack">
                     <div>
                         <span class="connect-label" data-i18n="emailLabelPrimary">Email</span>
-                        <a class="connect-value" href="mailto:coedtxmax001@gmail.com" data-i18n="emailValuePrimary">coedtxmax001@gmail.com</a>
+                        <a class="connect-value" href="mailto:coedtxmax001@gmail.com" aria-label="Send me an email at coedtxmax001@gmail.com" data-i18n="emailValuePrimary">coedtxmax001@gmail.com</a>
                     </div>
                     <div>
                         <span class="connect-label" data-i18n="emailLabelSecondary">Email</span>
-                        <a class="connect-value" href="mailto:2505049i-seifu.jp" data-i18n="emailValueSecondary">2505049i-seifu.jp</a>
+                        <a class="connect-value" href="mailto:2505049i-seifu.jp" aria-label="Send me an email at 2505049i-seifu.jp" data-i18n="emailValueSecondary">2505049i-seifu.jp</a>
                     </div>
                 </article>
             </div>
@@ -788,16 +811,62 @@
                 emailValuePrimary: "coedtxmax001@gmail.com",
                 emailLabelSecondary: "メール",
                 emailValueSecondary: "2505049i-seifu.jp"
+            },
+            my: {
+                pageTitle: "Kaung Si Thu Lin - System Engineer",
+                navAbout: "အကြောင်း",
+                navProjects: "လက်ရာတွေ",
+                navSkills: "ကျွမ်းကျင်မှုတွေ",
+                bgText1: "ဟိုင်း၊",
+                bgText2: "there",
+                roleTitle: "စနစ်\nအင်ဂျင်နီယာ",
+                heroBio: "Backend Infrastructure, AWS, နဲ့ modern Software Development တွေကို အဓိကလုပ်နေပါတယ်။",
+                aboutHeading: "ကျွန်တော့်အကြောင်း",
+                aboutText: "ကျွန်တော်က အိုဆာကာမှာနေတဲ့ ၂၂ နှစ်အရွယ် IT ကျောင်းသားပါ။ စနစ်အင်ဂျင်နီယာနဲ့ software development ကို တော်တော် စိတ်ဝင်စားပါတယ်။ ကျောင်းတက်ရင်း ဆူရှီဆိုင်မှာ shift supervisor အဖြစ်လည်း လုပ်နေပြီး ခေါင်းဆောင်မှု၊ အဖွဲ့လိုက်လုပ်ဆောင်မှု၊ အချိန်စီမံခန့်ခွဲမှုတွေကို လေ့လာပြီးသားပါ။",
+                skillsHeading: "ကျွမ်းကျင်တာတွေ",
+                projectsHeading: "လက်ရာတွေ",
+                projectOneTitle: "AI Career Navigator",
+                projectOneText: "ဂိမ်းတွေ၊ gadget တွေကို တစ်နေရာတည်းက ဝယ်လို့ရတဲ့ EC platform ပါ။",
+                projectTwoTitle: "Corporate HR Pitch",
+                projectTwoText: "ကုမ္ပဏီ HR ကို အနာဂတ်အလုပ်အကိုင်အတွက် စုံစုံလင်လင် presentation လုပ်ခဲ့ပါတယ်။",
+                featuredProjectHeading: "Code Crusher",
+                featuredIntro: "စနစ်ဖွဲ့စည်းပုံကို အသေးစိတ်ရှင်းထားတဲ့ slide deck ကိုကြည့်ပါ။",
+                viewPresentation: "Presentation ကြည့်မယ်",
+                hobbiesHeading: "ဝါသနာနဲ့ စိတ်ဝင်စားတာတွေ",
+                fitnessLabel: "လေ့ကျင့်ခန်း:",
+                fitnessText: "ကိုယ်ခန္ဓာတည်ဆောက်ရေးနဲ့ strength training ကိုလုပ်ပါတယ်။",
+                musicLabel: "ဂီတ:",
+                musicText: "Punk rock ကိုကြိုက်ပြီး headset တွေလည်း စုပါတယ်။",
+                gamingLabel: "ဂိမ်းနဲ့ ရုပ်ရှင်:",
+                gamingText: "Action game တွေ (Elden Ring, Sekiro), anime နဲ့ ရုပ်ရှင်တွေကို ကြိုက်ပါတယ် (Blade Runner, Dune)။",
+                connectHeading: "ချိတ်ဆက်ကြမယ်",
+                projectRepoLabel: "Project Repo",
+                projectRepoValue: "Code-Crusher",
+                githubProfileLabel: "GitHub Profile",
+                githubProfileValue: "@KaungSiThuLin",
+                emailLabelPrimary: "အီးမေးလ်",
+                emailValuePrimary: "coedtxmax001@gmail.com",
+                emailLabelSecondary: "အီးမေးလ်",
+                emailValueSecondary: "2505049i-seifu.jp"
             }
+        };
+
+        const languageLabels = {
+            en: "EN / JP / မြန်မာ",
+            ja: "JP / EN / မြန်မာ",
+            my: "မြန်မာ / EN / JP"
         };
 
         let currentLang = "en";
         document.getElementById("langToggle").addEventListener("click", () => {
-            currentLang = currentLang === "en" ? "ja" : "en";
+            const languages = ["en", "ja", "my"];
+            const currentIndex = languages.indexOf(currentLang);
+            currentLang = languages[(currentIndex + 1) % languages.length];
             updateLanguage();
         });
 
         function updateLanguage() {
+            document.getElementById("langToggle").textContent = languageLabels[currentLang] || "EN / JP / မြန်မာ";
             document.querySelectorAll("[data-i18n]").forEach(element => {
                 const key = element.getAttribute("data-i18n");
                 const translatedText = translations[currentLang][key];
