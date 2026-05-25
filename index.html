@@ -198,13 +198,13 @@
         .hero-iam {
             position: absolute;
             left: 0.9rem;
-            top: 9.85rem;
+            top: 11rem;
             z-index: 3;
         }
 
         .hero-kaung {
             position: absolute;
-            left: 17.7rem;
+            left: 16.6rem;
             top: 19.5rem;
             z-index: 3;
         }
@@ -374,7 +374,37 @@
             margin: 0 0 0.5rem 0;
             color: var(--text-main);
         }
-        .featured-banner p { color: var(--text-muted); margin: 0; }
+        .featured-copy {
+            display: grid;
+            gap: 0.8rem;
+            max-width: 44rem;
+        }
+
+        .featured-banner p {
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .featured-description {
+            font-size: 1.04rem;
+            line-height: 1.7;
+        }
+
+        .featured-link-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .featured-link-label {
+            font-size: 0.88rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: var(--text-muted);
+        }
+
         .featured-banner .btn-dark {
             background: var(--text-main);
             color: #ffffff;
@@ -441,7 +471,7 @@
 
         .connect-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
             gap: 2.8rem;
         }
 
@@ -566,6 +596,8 @@
                 padding: 1.5rem;
             }
             .featured-banner h3 { font-size: 2rem; }
+            .featured-copy { max-width: none; }
+            .featured-link-row { justify-content: center; }
             .info-board { padding: 1.5rem; }
             .connect-board { padding: 1.5rem; }
             .connect-grid { grid-template-columns: 1fr; gap: 1rem; }
@@ -626,7 +658,7 @@
 
         <h1 class="massive-title hero-iam" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="260">I AM</h1>
 
-        <h1 class="massive-title hero-kaung" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="320">KAUNG</h1>
+        <h1 class="massive-title hero-kaung" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="320">LIN</h1>
 
         <img src="kk-optimized.jpg" alt="Kaung Si Thu Lin" class="hero-photo" data-aos="fade-up" data-aos-duration="1200" loading="eager" fetchpriority="high" decoding="async">
 
@@ -694,11 +726,18 @@
         </section>
 
         <section class="featured-banner" data-aos="fade-up">
-            <div>
-                <h3 data-i18n="featuredProjectHeading">Code Crusher</h3>
-                <p data-i18n="featuredIntro">View the complete slide deck detailing the system architecture.</p>
+            <div class="featured-copy">
+                <div>
+                        <h3 data-i18n="featuredProjectHeading">Code Crusher</h3>
+                        <p data-i18n="featuredIntro">View the complete slide deck detailing the system architecture.</p>
+                </div>
+                    <p class="featured-description" data-i18n="featuredDescription">This project presents the system design, architecture flow, and the decisions behind how Code Crusher was built.</p>
+                    <div class="featured-link-row">
+                        <span class="featured-link-label" data-i18n="portfolioSiteLabel">Portfolio Site</span>
+                         <a href="https://gamma.app/embed/lfl7ko4gd5bcw92" target="_blank" rel="noopener" class="btn-dark external-link" data-i18n="viewPresentation">View Presentation</a>
+                        <a href="http://daddyk.babyblue.jp/" target="_blank" rel="noopener" class="btn-dark external-link" aria-label="Visit my portfolio site" data-i18n="portfolioSiteValue">daddyk.babyblue.jp</a>
+                    </div>
             </div>
-            <a href="https://gamma.app/embed/lfl7ko4gd5bcw92" target="_blank" rel="noopener" class="btn-dark external-link" data-i18n="viewPresentation">View Presentation</a>
         </section>
 
         <section class="info-board" data-aos="fade-up">
@@ -757,6 +796,7 @@
                 projectTwoText: "Delivered a comprehensive presentation to company human resources regarding future employment.",
                 featuredProjectHeading: "Code Crusher",
                 featuredIntro: "View the complete slide deck detailing the system architecture.",
+                featuredDescription: "This project presents the system design, architecture flow, and the decisions behind how Code Crusher was built.",
                 viewPresentation: "View Presentation",
                 hobbiesHeading: "Hobbies & Interests",
                 fitnessLabel: "Fitness:",
@@ -770,6 +810,8 @@
                 projectRepoValue: "Code-Crusher",
                 githubProfileLabel: "GitHub Profile",
                 githubProfileValue: "@KaungSiThuLin",
+                portfolioSiteLabel: "Portfolio Site",
+                portfolioSiteValue: "daddyk.babyblue.jp",
                 emailLabelPrimary: "Email",
                 emailValuePrimary: "coedtxmax001@gmail.com",
                 emailLabelSecondary: "Email",
@@ -780,7 +822,7 @@
                 navAbout: "概要",
                 navProjects: "実績",
                 navSkills: "サービス",
-                bgText1: "Hey,",
+                bgText1: "こんにちは、",
                 bgText2: "there",
                 roleTitle: "SYSTEM\nENGINEER",
                 heroBio: "Backend Infrastructure、AWS、および最新のSoftware Developmentに特化しています。",
@@ -794,6 +836,7 @@
                 projectTwoText: "会社の人事部へ将来の雇用に関する包括的なプレゼンテーションを行いました。",
                 featuredProjectHeading: "Code Crusher",
                 featuredIntro: "システムアーキテクチャを詳述したスライドデッキをご覧ください。",
+                featuredDescription: "このプロジェクトでは、Code Crusher のシステム設計、構成の流れ、そして実装方針を紹介しています。",
                 viewPresentation: "プレゼンを見る",
                 hobbiesHeading: "趣味と興味",
                 fitnessLabel: "フィットネス:",
@@ -807,6 +850,8 @@
                 projectRepoValue: "Code-Crusher",
                 githubProfileLabel: "GitHub プロフィール",
                 githubProfileValue: "@KaungSiThuLin",
+                portfolioSiteLabel: "ポートフォリオサイト",
+                portfolioSiteValue: "daddyk.babyblue.jp",
                 emailLabelPrimary: "メール",
                 emailValuePrimary: "coedtxmax001@gmail.com",
                 emailLabelSecondary: "メール",
@@ -817,7 +862,7 @@
                 navAbout: "အကြောင်း",
                 navProjects: "လက်ရာတွေ",
                 navSkills: "ကျွမ်းကျင်မှုတွေ",
-                bgText1: "ဟိုင်း၊",
+                bgText1: "Hey,",
                 bgText2: "there",
                 roleTitle: "စနစ်\nအင်ဂျင်နီယာ",
                 heroBio: "Backend Infrastructure, AWS, နဲ့ modern Software Development တွေကို အဓိကလုပ်နေပါတယ်။",
@@ -831,6 +876,7 @@
                 projectTwoText: "ကုမ္ပဏီ HR ကို အနာဂတ်အလုပ်အကိုင်အတွက် စုံစုံလင်လင် presentation လုပ်ခဲ့ပါတယ်။",
                 featuredProjectHeading: "Code Crusher",
                 featuredIntro: "စနစ်ဖွဲ့စည်းပုံကို အသေးစိတ်ရှင်းထားတဲ့ slide deck ကိုကြည့်ပါ။",
+                featuredDescription: "ဒီ project မှာ Code Crusher ကို ဘယ်လို design လုပ်ထားတယ်၊ architecture flow ဘယ်လိုဖြစ်တယ်၊ ဘာကြောင့် အဲဒီလိုဆုံးဖြတ်ခဲ့လဲ ဆိုတာကို တင်ပြထားပါတယ်။",
                 viewPresentation: "Presentation ကြည့်မယ်",
                 hobbiesHeading: "ဝါသနာနဲ့ စိတ်ဝင်စားတာတွေ",
                 fitnessLabel: "လေ့ကျင့်ခန်း:",
@@ -844,6 +890,8 @@
                 projectRepoValue: "Code-Crusher",
                 githubProfileLabel: "GitHub Profile",
                 githubProfileValue: "@KaungSiThuLin",
+                portfolioSiteLabel: "ပရိုဖိုင်ဆိုဒ်",
+                portfolioSiteValue: "daddyk.babyblue.jp",
                 emailLabelPrimary: "အီးမေးလ်",
                 emailValuePrimary: "coedtxmax001@gmail.com",
                 emailLabelSecondary: "အီးမေးလ်",
